@@ -1,0 +1,21 @@
+name: rlab
+channels:
+  - conda-forge
+dependencies:
+  - jupyterlab
+  - poppler
+  - r-base=4.5.2
+  - r-irkernel
+  - r-digest
+  - r-glmnet
+  - r-gridextra
+  - r-patchwork
+  - r-proc
+  - r-ragg
+  - r-survey
+  - r-systemfonts
+  - r-textshaping
+  - r-tidyverse
+  - r-xgboost
+  - libxml2
+  - r-xml2
