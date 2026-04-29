@@ -1,53 +1,24 @@
-# Survey-aware ML Analysis: Public Release
+# SaML Public Reproduction Package
 
-This folder is a minimal public package for the accepted paper. It includes:
+This package reproduces the public experimental results for the SaML paper using
+curated NHANES-derived inputs shipped in `data/`.
 
-- curated analysis inputs in `data/`
-- public `R` scripts for preprocessing and Experiments `1-4` in `code/`
-- reproducibility notebooks in `notebooks/repro/`
-- expected baseline fixtures in `expected/` for PASS/FAIL checks
+It includes:
 
-It does not include the internal manuscript workspace, audit tooling, or the full internal result/output tree.
+- public R scripts for Experiments 1-4
+- frozen input data used by the release
+- expected result fixtures for verification
+- reproducibility notebooks and a one-command verification script
 
-## Runtime
+## Quick Start
 
-The supported runtime is `conda` environment `rlab`.
+Create the environment:
 
 ```bash
 conda env create -f environment.yml
-conda activate rlab
 ```
 
-`environment.yml` includes the packages required for the accepted-paper Experiments `1-4`, including `xgboost`.
-
-`pdftoppm` is required for figure checks and is provided through `poppler` in `environment.yml`.
-
-### Optional: rerun preprocessing from raw NHANES
-
-`code/00_preprocessing.R` is **not** needed to reproduce the accepted-paper results. It is included only for provenance and follow-up preprocessing checks. If you plan to rerun it, install `nhanesA` separately:
-
-```bash
-Rscript -e "install.packages('nhanesA', repos='https://cloud.r-project.org')"
-```
-
-This optional step requires internet access during preprocessing.
-
-## Folder Layout
-
-```text
-saml_repo/
-├── code/              # preprocessing + Exp 1-4 scripts
-├── data/              # curated RDS inputs used by the paper package
-├── expected/          # baseline fixtures used by repro notebooks
-├── notebooks/repro/   # rerun + compare notebooks
-├── environment.yml
-├── LICENSE
-└── README.md
-```
-
-## Running the Public Scripts
-
-Run commands from the repository root:
+Run the released experiments from the repository root:
 
 ```bash
 conda run -n rlab Rscript code/01_experiment1_descriptive.R
@@ -56,58 +27,77 @@ conda run -n rlab Rscript code/03_experiment3_training.R
 conda run -n rlab Rscript code/04_experiment4_cv_factorial.R
 ```
 
-Generated outputs are written to `results/`, which is intentionally ignored by git.
-Fresh outputs in `results/` can be compared against the frozen `expected/*.rds` fixtures through the reproducibility notebooks.
+Fresh outputs are written to `results/`.
 
 Approximate runtimes on the audit machine:
 
-- `01_experiment1_descriptive.R`: ~10 seconds
-- `02_experiment2_evaluation.R`: ~1 minute
-- `03_experiment3_training.R`: ~4 minutes
-- `04_experiment4_cv_factorial.R`: ~15-20 minutes
+- Experiment 1: ~10 seconds
+- Experiment 2: ~1 minute
+- Experiment 3: ~4 minutes
+- Experiment 4: ~15-20 minutes
 
-The accepted-paper experiments intentionally use a minimal two-feature model: `age` and `BMI`.
+## Verify the Release
 
-`data/` and `expected/` are the canonical frozen accepted-paper artifacts for this package.
-
-`code/00_preprocessing.R` is included for provenance and follow-up preprocessing. It downloads raw NHANES tables, derives supplementary fields such as `female` and `race_eth`, and writes regenerated artifacts to `results/`; it does not overwrite the curated frozen inputs in `data/`, and those regenerated outputs are not the baseline used for the accepted-paper repro checks.
-
-`Experiment 4` in this package intentionally preserves the accepted-paper cross-validation implementation. This keeps the release numerically aligned with the paper artifacts, even though that implementation should be interpreted as a frozen paper baseline rather than a corrected follow-up benchmark.
-
-## Running the Reproducibility Notebooks
-
-The notebooks rerun the public scripts in an isolated scratch workspace and compare the outputs against `expected/`.
-
-From `notebooks/repro/`, the default one-command verifier is:
+From `notebooks/repro/`, run:
 
 ```bash
 bash verify_all.sh
 ```
 
-To run a single notebook manually:
+This executes all four reproducibility notebooks and checks regenerated outputs
+against the frozen fixtures in `expected/`.
 
-```bash
-cd notebooks/repro
+## Repository Layout
 
-JUPYTER_CONFIG_DIR=/tmp/empty_jupyter_config \
-  conda run -n rlab jupyter nbconvert --to notebook --execute \
-  --ExecutePreprocessor.timeout=7200 \
-  --ExecutePreprocessor.kernel_name=ir \
-  01_exp1_repro.ipynb --output 01_exp1_repro_executed.ipynb
+```text
+saml_repo/
+├── code/              # public preprocessing + Experiment 1-4 scripts
+├── data/              # frozen curated release inputs
+├── expected/          # frozen baseline result fixtures
+├── notebooks/repro/   # reproducibility notebooks and verifier
+├── environment.yml    # conda environment
+├── LICENSE
+└── README.md
 ```
 
-Repeat for `02_exp2_repro.ipynb`, `03_exp3_repro.ipynb`, and `04_exp4_repro.ipynb`.
+## What Each Script Does
 
-## Notes
+- `code/01_experiment1_descriptive.R`
+  - weighted vs unweighted descriptive summaries
+- `code/02_experiment2_evaluation.R`
+  - logistic regression with unweighted and survey-weighted AUC evaluation
+- `code/03_experiment3_training.R`
+  - 2x2 training/evaluation factorial with XGBoost
+- `code/04_experiment4_cv_factorial.R`
+  - cross-validation factorial benchmark
 
-- `data/` is the canonical curated input for this release.
-- `expected/` contains only the baseline fixtures needed for public reproducibility checks.
-- `female` and `race_eth` are follow-up-ready preprocessing fields, not predictors used in the accepted-paper experiments.
-- `Exp 5` and the internal portability-audit workflow are intentionally excluded from this package.
-- `notebooks/repro/build_repro_notebooks.py` is developer tooling used to regenerate the four repro notebooks; public users do not need to run it for standard verification.
+## Notes on the Data
 
-## License and Citation
+- `data/` is the canonical frozen input for this release.
+- The released experiments use the minimal accepted-paper modeling setup based on
+  `RIDAGEYR` and `BMXBMI`.
+- Additional demographic fields may appear in the shipped data because the
+  release preserves the preprocessing lineage of the public package.
 
-- `LICENSE` in this folder is a stub. The published repository will use the **GitHub-generated LICENSE** (auto-injected at repo creation), so the in-repo file will be replaced at publication time.
-- Author / ORCID / paper citation metadata (`CITATION.cff`, BibTeX) are intentionally **deferred to a later metadata pass**, closer to publication. They are not part of this snapshot.
-- NHANES data attribution is tracked separately under `data/README.md` (NHANES source tables, download date, filter chain) and is **not** affected by the LICENSE / CITATION deferral above.
+See [data/README.md](data/README.md) for source tables, filter rules, and
+attribution notes for the derived NHANES inputs.
+
+## Optional: Rebuild Preprocessing Inputs
+
+`code/00_preprocessing.R` is included for provenance and data-regeneration
+checks. It is **not** required for reproducing Experiments 1-4 from the shipped
+release.
+
+If you want to rerun preprocessing from raw NHANES tables, install `nhanesA`
+separately:
+
+```bash
+Rscript -e "install.packages('nhanesA', repos='https://cloud.r-project.org')"
+```
+
+This step requires internet access.
+
+## Developer Note
+
+`notebooks/repro/build_repro_notebooks.py` regenerates the reproducibility
+notebooks. It is not needed for standard use of the public release.
