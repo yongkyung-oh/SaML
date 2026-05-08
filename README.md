@@ -23,9 +23,9 @@ assessments fail to reflect population-level disparities. We propose
 incorporates survey design metadata across the ML lifecycle. Through a scoping
 review of 16 methodological papers, we summarize existing work on weighted
 model training, design-based cross-validation, and survey-adjusted performance
-evaluation. We also identify gaps in hyperparameter tuning and deployment, and
-provide task-specific guidance that clarifies which steps are required for
-different analytical objectives. SaML provides a checklist for valid population
+evaluation. We also identify gaps in hyperparameter tuning and deployment. We provide
+task-specific guidance that clarifies which steps are required for different
+analytical objectives. SaML provides a checklist for valid population
 inference from survey data.
 
 ## Authors
@@ -103,8 +103,8 @@ From `notebooks/repro/`:
 bash verify_all.sh
 ```
 
-This executes the four reproducibility notebooks and compares regenerated
-outputs against the frozen fixtures in [expected/](expected/).
+Each notebook's final cell compares regenerated outputs against the frozen
+fixtures in [expected/](expected/) and reports PASS/FAIL.
 
 ## Experiments
 
@@ -128,8 +128,11 @@ Each experiment validates one or more steps of the SaML guideline (S1–S6).
 
 - **Experiment 4 — Cross-validation (S2: Data splitting, S4: Hyperparameter
   tuning).** A 2×2×2 factorial over CV scheme (random vs PSU-level) ×
-  training × evaluation. Reproduces the result that PSU-level CV yields lower
-  but markedly more stable AUROC estimates than random CV.
+  training × evaluation. Reproduces the paper's descriptive comparison:
+  PSU-level CV yields slightly lower mean AUROC with smaller fold-to-fold
+  standard deviation than random CV, with the caveat that only 6 of 15
+  planned PSU folds were usable, so the paper treats this as a descriptive
+  comparison rather than a definitive ranking of estimator reliability.
 
 ## Data availability
 
