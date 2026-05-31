@@ -90,7 +90,7 @@ conda run -n rlab Rscript code/04_experiment4_cv_factorial.R
 
 Outputs are written to `results/` (gitignored).
 
-Approximate runtimes on the audit machine:
+Approximate runtimes on a reference machine:
 
 - Experiment 1: ~10 seconds
 - Experiment 2: ~1 minute
