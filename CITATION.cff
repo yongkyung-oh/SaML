@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use this software or the SaML guideline, please cite the paper below."
+title: "Survey-aware Machine Learning: A Guideline for Valid Population Health Inference based on Scoping Review"
+type: software
+authors:
+  - family-names: Oh
+    given-names: YongKyung
+    orcid: "https://orcid.org/0000-0002-8027-3433"
+  - family-names: Zheng
+    given-names: Henry W.
+  - family-names: Feng
+    given-names: Jeffrey
+  - family-names: Bui
+    given-names: Alex A. T.
+repository-code: "https://github.com/yongkyung-oh/SaML"
+license: MIT
+preferred-citation:
+  type: conference-paper
+  title: "Survey-aware Machine Learning: A Guideline for Valid Population Health Inference based on Scoping Review"
+  authors:
+    - family-names: Oh
+      given-names: YongKyung
+      orcid: "https://orcid.org/0000-0002-8027-3433"
+    - family-names: Zheng
+      given-names: Henry W.
+    - family-names: Feng
+      given-names: Jeffrey
+    - family-names: Bui
+      given-names: Alex A. T.
+  collection-title: "Proceedings of the Conference on Health, Inference, and Learning (CHIL)"
+  collection-type: proceedings
+  conference:
+    name: "Conference on Health, Inference, and Learning"
+    alias: "CHIL 2026"
+  year: 2026
+  notes: "Accepted at CHIL 2026; in press. Proceedings volume, pages, and DOI are not yet available. Until the official proceedings appear, please cite the arXiv preprint (arXiv:2605.08963)."
+  url: "https://arxiv.org/abs/2605.08963"
+  identifiers:
+    - type: other
+      value: "arXiv:2605.08963"
+      description: "arXiv preprint identifier"
+    - type: doi
+      value: "10.48550/arXiv.2605.08963"
+      description: "arXiv preprint DOI"
