@@ -4,6 +4,8 @@
 Public reproduction package for the paper accepted to the **Conference on
 Health, Inference, and Learning (CHIL) 2026** *(in press)*.
 
+Paper: CHIL 2026 (accepted, in press) · arXiv: <https://arxiv.org/abs/2605.08963>
+
 ![Hero figure: ROC curves for diabetes prediction under unweighted and survey-weighted evaluation on NHANES 2021–2023.](assets/figures/hero_roc.png)
 
 > Logistic regression for diabetes on NHANES 2021–2023 (age, BMI). The two
@@ -173,7 +175,9 @@ If you use this code or build on the SaML guideline, please cite the paper
   booktitle = {Proceedings of the Conference on Health, Inference, and
                Learning (CHIL)},
   year      = {2026},
-  note      = {in press}
+  note      = {in press; arXiv:2605.08963},
+  eprint    = {2605.08963},
+  archivePrefix = {arXiv}
 }
 ```
 
