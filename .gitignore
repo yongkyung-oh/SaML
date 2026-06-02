@@ -5,3 +5,10 @@ __pycache__/
 .Rhistory
 .RData
 .Rproj.user/
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+Thumbs.db
+desktop.ini

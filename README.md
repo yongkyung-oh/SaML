@@ -163,21 +163,19 @@ Released under the MIT License — see [LICENSE](LICENSE).
 
 ## Citation
 
-If you use this code or build on the SaML guideline, please cite the paper
-(in press, CHIL 2026):
+If you use this code or build on the SaML guideline, please cite the arXiv
+preprint until the official CHIL 2026 proceedings metadata appears:
 
 ```bibtex
-@inproceedings{oh_saml_2026,
+@misc{oh_saml_2026,
   title     = {Survey-aware Machine Learning: A Guideline for Valid
                Population Health Inference based on Scoping Review},
   author    = {Oh, YongKyung and Zheng, Henry W. and Feng, Jeffrey and
                Bui, Alex A. T.},
-  booktitle = {Proceedings of the Conference on Health, Inference, and
-               Learning (CHIL)},
+  publisher = {arXiv},
   year      = {2026},
-  note      = {in press; arXiv:2605.08963},
-  eprint    = {2605.08963},
-  archivePrefix = {arXiv}
+  doi       = {10.48550/arXiv.2605.08963},
+  url       = {https://arxiv.org/abs/2605.08963}
 }
 ```
 
