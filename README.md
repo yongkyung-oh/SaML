@@ -167,7 +167,7 @@ If you use this code or build on the SaML guideline, please cite the arXiv
 preprint until the official CHIL 2026 proceedings metadata appears:
 
 ```bibtex
-@misc{oh_saml_2026,
+@misc{oh_survey-aware_2026,
   title     = {Survey-aware Machine Learning: A Guideline for Valid
                Population Health Inference based on Scoping Review},
   author    = {Oh, YongKyung and Zheng, Henry W. and Feng, Jeffrey and
