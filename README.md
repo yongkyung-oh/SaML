@@ -1,10 +1,19 @@
 # Survey-aware Machine Learning (SaML)
 
 *A guideline for valid population health inference based on a scoping review.*
+
+[![Paper](https://img.shields.io/badge/Paper-CHIL%202026-b31b1b)](https://arxiv.org/abs/2605.08963)
+[![arXiv](https://img.shields.io/badge/arXiv-2605.08963-b31b1b)](https://arxiv.org/abs/2605.08963)
+[![EQUATOR](https://img.shields.io/badge/EQUATOR-Guideline%20under%20development-1f6feb)](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![R 4.5.2](https://img.shields.io/badge/R-4.5.2-276DC3)](environment.yml)
+
 Public reproduction package for the paper accepted to the **Conference on
 Health, Inference, and Learning (CHIL) 2026** *(in press)*.
 
-Paper: CHIL 2026 (accepted, in press) · arXiv: <https://arxiv.org/abs/2605.08963>
+📄 **Paper** — [CHIL 2026 (accepted, in press)](https://arxiv.org/abs/2605.08963) ·
+💻 **Code** — [yongkyung-oh/SaML](https://github.com/yongkyung-oh/SaML) ·
+📋 **Reporting guideline** — [registered with the EQUATOR Network](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML) *(under development)*
 
 ![Hero figure: ROC curves for diabetes prediction under unweighted and survey-weighted evaluation on NHANES 2021–2023.](assets/figures/hero_roc.png)
 
@@ -29,6 +38,20 @@ evaluation. We also identify gaps in hyperparameter tuning and deployment. We pr
 task-specific guidance that clarifies which steps are required for different
 analytical objectives. SaML provides a checklist for valid population
 inference from survey data.
+
+## Reporting guideline (EQUATOR Network)
+
+SaML is being developed as a **reporting guideline**, not only a methods paper.
+It is registered with the [EQUATOR Network](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML)
+— the international initiative that catalogs reporting standards for health
+research — as *"Survey Aware Machine Learning (SaML) Statement: Reporting Items
+for Machine Learning Studies Using Complex Sample Survey Data"* (2026, under
+development).
+
+In practice this means SaML aims to become a citable checklist that authors,
+reviewers, and journals can use to confirm that an ML study on complex survey
+data reports the design elements (sampling weights, strata, primary sampling
+units) needed for valid population-level inference.
 
 ## Authors
 
@@ -139,8 +162,8 @@ Each experiment validates one or more steps of the SaML guideline (S1–S6).
 ## Data availability
 
 The empirical illustration uses the **NHANES 2021–2023** cycle, publicly
-released by the U.S. Centers for Disease Control and Prevention (NCHS):
-<https://www.cdc.gov/nchs/nhanes/>.
+released by the U.S. Centers for Disease Control and Prevention
+([NCHS NHANES](https://www.cdc.gov/nchs/nhanes/)).
 
 The shipped frozen inputs in [data/](data/) are derived from the public-use
 tables `DEMO_L`, `BMX_L`, `BPXO_L`, and `DIQ_L`. The analytic cohort restricts
@@ -179,16 +202,29 @@ preprint until the official CHIL 2026 proceedings metadata appears:
 }
 ```
 
-## For maintainers
+The SaML reporting guideline is registered with the
+[EQUATOR Network](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML)
+as *"Survey Aware Machine Learning (SaML) Statement: Reporting Items for Machine
+Learning Studies Using Complex Sample Survey Data"* (under development).
 
-These steps are not required to reproduce the paper.
+## Advanced: rebuilding from source
 
-- `code/00_preprocessing.R` regenerates the preprocessing artifacts from raw
-  NHANES tables via `nhanesA::nhanes()` (requires internet). It writes to
-  `results/` and does **not** overwrite the frozen files in [data/](data/).
-  Install the extra dependency separately:
-  ```bash
-  Rscript -e "install.packages('nhanesA', repos='https://cloud.r-project.org')"
-  ```
-- `notebooks/repro/build_repro_notebooks.py` regenerates the verifier
-  notebooks committed under [notebooks/repro/](notebooks/repro/).
+> You do **not** need any of this to reproduce the paper — the steps above run
+> entirely on the frozen inputs shipped in this repository. The commands below
+> are only useful if you want to start from the raw NHANES tables or rebuild the
+> verifier notebooks yourself.
+
+**Regenerate the inputs from raw NHANES data.**
+`code/00_preprocessing.R` downloads the raw NHANES tables via
+`nhanesA::nhanes()` (requires an internet connection) and rebuilds the
+preprocessing artifacts. It writes to `results/` and never overwrites the frozen
+files in [data/](data/), so your reproduction stays intact. Install the extra
+dependency first:
+
+```bash
+Rscript -e "install.packages('nhanesA', repos='https://cloud.r-project.org')"
+```
+
+**Rebuild the verifier notebooks.**
+`notebooks/repro/build_repro_notebooks.py` regenerates the reproducibility
+notebooks committed under [notebooks/repro/](notebooks/repro/).
