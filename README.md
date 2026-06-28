@@ -4,6 +4,7 @@
 
 [![Paper](https://img.shields.io/badge/Paper-CHIL%202026-b31b1b)](https://arxiv.org/abs/2605.08963)
 [![arXiv](https://img.shields.io/badge/arXiv-2605.08963-b31b1b)](https://arxiv.org/abs/2605.08963)
+[![Poster](https://img.shields.io/badge/Poster-PDF-f9ab00)](https://drive.google.com/file/d/1pK3iE0dor4w4c_twzwMcI3MU_SJWdlm9/view?usp=sharing)
 [![EQUATOR](https://img.shields.io/badge/EQUATOR-Guideline%20under%20development-1f6feb)](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![R 4.5.2](https://img.shields.io/badge/R-4.5.2-276DC3)](environment.yml)
@@ -11,9 +12,10 @@
 Public reproduction package for the paper accepted to the **Conference on
 Health, Inference, and Learning (CHIL) 2026** *(in press)*.
 
-📄 **Paper** — [CHIL 2026 (accepted, in press)](https://arxiv.org/abs/2605.08963) ·
-💻 **Code** — [yongkyung-oh/SaML](https://github.com/yongkyung-oh/SaML) ·
-📋 **Reporting guideline** — [registered with the EQUATOR Network](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML) *(under development)*
+- 📄 **Paper** — [CHIL 2026 (accepted, in press)](https://arxiv.org/abs/2605.08963)
+- 💻 **Code** — [yongkyung-oh/SaML](https://github.com/yongkyung-oh/SaML)
+- 🖼️ **Poster** — [CHIL 2026 poster (PDF)](https://drive.google.com/file/d/1pK3iE0dor4w4c_twzwMcI3MU_SJWdlm9/view?usp=sharing)
+- 📋 **Reporting guideline** — [registered with the EQUATOR Network](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML) *(under development)*
 
 ![Hero figure: ROC curves for diabetes prediction under unweighted and survey-weighted evaluation on NHANES 2021–2023.](assets/figures/hero_roc.png)
 
