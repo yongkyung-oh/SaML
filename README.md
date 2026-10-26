@@ -2,17 +2,17 @@
 
 *A guideline for valid population health inference based on a scoping review.*
 
-[![Paper](https://img.shields.io/badge/Paper-CHIL%202026-b31b1b)](https://arxiv.org/abs/2605.08963)
+[![Paper](https://img.shields.io/badge/Paper-CHIL%202026-b31b1b)](https://proceedings.mlr.press/v333/oh26a.html)
 [![arXiv](https://img.shields.io/badge/arXiv-2605.08963-b31b1b)](https://arxiv.org/abs/2605.08963)
 [![Poster](https://img.shields.io/badge/Poster-PDF-f9ab00)](https://drive.google.com/file/d/1pK3iE0dor4w4c_twzwMcI3MU_SJWdlm9/view?usp=sharing)
 [![EQUATOR](https://img.shields.io/badge/EQUATOR-Guideline%20under%20development-1f6feb)](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![R 4.5.2](https://img.shields.io/badge/R-4.5.2-276DC3)](environment.yml)
 
-Public reproduction package for the paper accepted to the **Conference on
-Health, Inference, and Learning (CHIL) 2026** *(in press)*.
+Public reproduction package for the paper published at the **Conference on
+Health, Inference, and Learning (CHIL) 2026** (PMLR 333, pp. 198–220).
 
-- 📄 **Paper** — [CHIL 2026 (accepted, in press)](https://arxiv.org/abs/2605.08963)
+- 📄 **Paper** — [CHIL 2026, PMLR 333](https://proceedings.mlr.press/v333/oh26a.html) · [arXiv:2605.08963](https://arxiv.org/abs/2605.08963)
 - 💻 **Code** — [yongkyung-oh/SaML](https://github.com/yongkyung-oh/SaML)
 - 🖼️ **Poster** — [CHIL 2026 poster (PDF)](https://drive.google.com/file/d/1pK3iE0dor4w4c_twzwMcI3MU_SJWdlm9/view?usp=sharing)
 - 📋 **Reporting guideline** — [registered with the EQUATOR Network](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML) *(under development)*
@@ -188,17 +188,30 @@ Released under the MIT License — see [LICENSE](LICENSE).
 
 ## Citation
 
-If you use this code or build on the SaML guideline, please cite the arXiv
-preprint until the official CHIL 2026 proceedings metadata appears:
+If you use this code or build on the SaML guideline, please cite the official
+PMLR version; the arXiv entry is listed separately.
 
 ```bibtex
-@misc{oh_survey-aware_2026,
-  title     = {Survey-aware Machine Learning: A Guideline for Valid
-               Population Health Inference based on Scoping Review},
-  author    = {Oh, YongKyung and Zheng, Henry W. and Feng, Jeffrey and
-               Bui, Alex A. T.},
+@inproceedings{oh_survey-aware_2026,
+  author    = {Oh, YongKyung and Zheng, Henry W. and Feng, Jeffrey and Bui, Alex A. T.},
+  title     = {Survey-{Aware} {Machine} {Learning}: {A} {Guideline} for {Valid} {Population} {Health} {Inference} based on {Scoping} {Review}},
+  booktitle = {Proceedings of the 7th {Conference} on {Health}, {Inference}, and {Learning}},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = 333,
+  pages     = {198--220},
+  publisher = {PMLR},
+  year      = 2026,
+  editor    = {Healey, Elizabeth and Fries, Jason and Pollard, Tom and Tang, Shengpu and Zink, Anna and Hartvigsen, Tom and Agrawal, Monica and Finlayson, Sam and Glicksberg, Benjamin and Beaulieu-Jones, Brett and Wang, Kai and Fontalvo, Daseyra and Sarker, Tasmie and Chen, Irene and Alsentzer, Emily},
+  url       = {https://proceedings.mlr.press/v333/oh26a.html}
+}
+```
+
+```bibtex
+@misc{oh_survey-aware_2026_arxiv,
+  author    = {Oh, YongKyung and Zheng, Henry W. and Feng, Jeffrey and Bui, Alex A. T.},
+  title     = {Survey-{Aware} {Machine} {Learning}: {A} {Guideline} for {Valid} {Population} {Health} {Inference} based on {Scoping} {Review}},
   publisher = {arXiv},
-  year      = {2026},
+  year      = 2026,
   doi       = {10.48550/arXiv.2605.08963},
   url       = {https://arxiv.org/abs/2605.08963}
 }
