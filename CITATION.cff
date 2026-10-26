@@ -16,7 +16,7 @@ repository-code: "https://github.com/yongkyung-oh/SaML"
 license: MIT
 preferred-citation:
   type: conference-paper
-  title: "Survey-aware Machine Learning: A Guideline for Valid Population Health Inference based on Scoping Review"
+  title: "Survey-Aware Machine Learning: A Guideline for Valid Population Health Inference based on Scoping Review"
   authors:
     - family-names: Oh
       given-names: YongKyung
@@ -27,14 +27,51 @@ preferred-citation:
       given-names: Jeffrey
     - family-names: Bui
       given-names: Alex A. T.
-  collection-title: "Proceedings of the Conference on Health, Inference, and Learning (CHIL)"
+  editors:
+    - family-names: Healey
+      given-names: Elizabeth
+    - family-names: Fries
+      given-names: Jason
+    - family-names: Pollard
+      given-names: Tom
+    - family-names: Tang
+      given-names: Shengpu
+    - family-names: Zink
+      given-names: Anna
+    - family-names: Hartvigsen
+      given-names: Tom
+    - family-names: Agrawal
+      given-names: Monica
+    - family-names: Finlayson
+      given-names: Sam
+    - family-names: Glicksberg
+      given-names: Benjamin
+    - family-names: Beaulieu-Jones
+      given-names: Brett
+    - family-names: Wang
+      given-names: Kai
+    - family-names: Fontalvo
+      given-names: Daseyra
+    - family-names: Sarker
+      given-names: Tasmie
+    - family-names: Chen
+      given-names: Irene
+    - family-names: Alsentzer
+      given-names: Emily
+  collection-title: "Proceedings of the 7th Conference on Health, Inference, and Learning"
   collection-type: proceedings
   conference:
     name: "Conference on Health, Inference, and Learning"
     alias: "CHIL 2026"
+  volume: 333
+  start: "198"
+  end: "220"
   year: 2026
-  notes: "Accepted at CHIL 2026; in press. Proceedings volume, pages, and DOI are not yet available. Until the official proceedings appear, please cite the arXiv preprint (arXiv:2605.08963)."
-  url: "https://arxiv.org/abs/2605.08963"
+  month: 6
+  publisher:
+    name: PMLR
+  issn: "2640-3498"
+  url: "https://proceedings.mlr.press/v333/oh26a.html"
   identifiers:
     - type: other
       value: "arXiv:2605.08963"
