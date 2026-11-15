@@ -89,10 +89,7 @@ df <- df %>%
 
 df <- df %>%
   mutate(
-    # Follow-up demographic fields.
-    # The accepted-paper experiments in this package intentionally use only
-    # age and BMI; sex and race/ethnicity are retained here for downstream
-    # follow-up analyses.
+    # Derive sex and race/ethnicity variables.
     female = ifelse(as.character(RIAGENDR) == "Female", 1, 0),
     
     # Age groups
@@ -153,7 +150,7 @@ saveRDS(design, results_path("survey_design.rds"))
 cat("\nData saved to:\n")
 cat("  ", results_path("nhanes_processed.rds"), "\n", sep = "")
 cat("  ", results_path("survey_design.rds"), "\n", sep = "")
-cat("These regenerated outputs are follow-up-ready preprocessing artifacts.\n")
+cat("These regenerated preprocessing outputs are written to results/.\n")
 cat("They do not replace the frozen `data/` inputs or `expected/` fixtures used to reproduce the accepted paper.\n")
 cat("The accepted-paper package remains aligned to the curated two-feature baseline in `data/`.\n")
 
