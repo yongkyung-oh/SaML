@@ -1,6 +1,5 @@
 .ipynb_checkpoints/
 results/
-notebooks/repro/*_executed.ipynb
 __pycache__/
 .Rhistory
 .RData

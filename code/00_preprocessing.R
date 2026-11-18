@@ -151,7 +151,6 @@ cat("\nData saved to:\n")
 cat("  ", results_path("nhanes_processed.rds"), "\n", sep = "")
 cat("  ", results_path("survey_design.rds"), "\n", sep = "")
 cat("These regenerated preprocessing outputs are written to results/.\n")
-cat("They do not replace the frozen `data/` inputs or `expected/` fixtures used to reproduce the accepted paper.\n")
-cat("The accepted-paper package remains aligned to the curated two-feature baseline in `data/`.\n")
+cat("They do not replace the inputs in `data/`.\n")
 
 cat("\n=== Preprocessing Complete ===\n")

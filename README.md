@@ -17,13 +17,6 @@ Health, Inference, and Learning (CHIL) 2026** (PMLR 333, pp. 198–220).
 - 🖼️ **Poster** — [CHIL 2026 poster (PDF)](https://drive.google.com/file/d/1pK3iE0dor4w4c_twzwMcI3MU_SJWdlm9/view?usp=sharing)
 - 📋 **Reporting guideline** — [registered with the EQUATOR Network](https://www.equator-network.org/library/reporting-guidelines-under-development/reporting-guidelines-under-development-for-other-study-designs/#SaML) *(under development)*
 
-![Hero figure: ROC curves for diabetes prediction under unweighted and survey-weighted evaluation on NHANES 2021–2023.](assets/figures/hero_roc.png)
-
-> Logistic regression for diabetes on NHANES 2021–2023 (age, BMI). The two
-> panels show the same model evaluated under standard *unweighted* metrics and
-> *survey-weighted* metrics. The gap between the two panels is the central
-> empirical message of the paper.
-
 ## Abstract
 
 Machine Learning (ML) models trained on complex health surveys such as the
@@ -74,8 +67,6 @@ NHANES-derived cohort:
 
 - public R scripts for Experiments 1–4
 - frozen input data used by the release
-- baseline result fixtures for verification
-- reproducibility notebooks and a one-command verifier
 
 ## Repository layout
 
@@ -83,9 +74,6 @@ NHANES-derived cohort:
 SaML/
 ├── code/              # public preprocessing + Experiment 1–4 scripts
 ├── data/              # frozen, curated release inputs (NHANES 2021–2023)
-├── expected/          # frozen baseline result fixtures
-├── notebooks/repro/   # reproducibility notebooks and verifier
-├── assets/figures/    # README assets
 ├── environment.yml    # conda environment (R 4.5.2 + survey, xgboost, …)
 ├── LICENSE
 └── README.md
@@ -114,52 +102,6 @@ conda run -n rlab Rscript code/04_experiment4_cv_factorial.R
 ```
 
 Outputs are written to `results/` (gitignored).
-
-Approximate runtimes on a reference machine:
-
-- Experiment 1: ~10 seconds
-- Experiment 2: ~1 minute
-- Experiment 3: ~4 minutes
-- Experiment 4: ~15–20 minutes
-
-### Verify reproducibility
-
-From `notebooks/repro/`:
-
-```bash
-bash verify_all.sh
-```
-
-Each notebook's final cell compares regenerated outputs against the frozen
-fixtures in [expected/](expected/) and reports PASS/FAIL.
-
-## Experiments
-
-Each experiment validates one or more steps of the SaML guideline (S1–S6).
-
-- **Experiment 1 — Descriptive (S1: Data preprocessing & EDA).** Compares
-  unweighted sample statistics with design-weighted population estimates.
-  Reproduces the headline finding that the unweighted mean age exceeds the
-  weighted estimate by ~5.1 years (≈9.4%) and that diabetes prevalence shifts
-  from 14.9% (unweighted) to 12.1% (population-weighted).
-
-- **Experiment 2 — Evaluation (S5: Performance evaluation, S6: Uncertainty).**
-  Logistic regression for diabetes from age and BMI. Reproduces the AUROC
-  shift from 0.743 (95% CI 0.727–0.758) under unweighted evaluation to 0.775
-  (0.749–0.793) under survey-weighted evaluation.
-
-- **Experiment 3 — Training (S3: Model training, S5: Evaluation).** A 2×2
-  factorial XGBoost study (training with/without survey weights ×
-  evaluating with/without survey weights). Reproduces the result that the
-  benefit of weighted training is only visible under weighted evaluation.
-
-- **Experiment 4 — Cross-validation (S2: Data splitting, S4: Hyperparameter
-  tuning).** A 2×2×2 factorial over CV scheme (random vs PSU-level) ×
-  training × evaluation. Reproduces the paper's descriptive comparison:
-  PSU-level CV yields slightly lower mean AUROC with smaller fold-to-fold
-  standard deviation than random CV, with the caveat that only 6 of 15
-  planned PSU folds were usable, so the paper treats this as a descriptive
-  comparison rather than a definitive ranking of estimator reliability.
 
 ## Data availability
 
@@ -226,8 +168,7 @@ Learning Studies Using Complex Sample Survey Data"* (under development).
 
 > You do **not** need any of this to reproduce the paper — the steps above run
 > entirely on the frozen inputs shipped in this repository. The commands below
-> are only useful if you want to start from the raw NHANES tables or rebuild the
-> verifier notebooks yourself.
+> are only useful if you want to start from the raw NHANES tables.
 
 **Regenerate the inputs from raw NHANES data.**
 `code/00_preprocessing.R` downloads the raw NHANES tables via
@@ -239,7 +180,3 @@ dependency first:
 ```bash
 Rscript -e "install.packages('nhanesA', repos='https://cloud.r-project.org')"
 ```
-
-**Rebuild the verifier notebooks.**
-`notebooks/repro/build_repro_notebooks.py` regenerates the reproducibility
-notebooks committed under [notebooks/repro/](notebooks/repro/).

@@ -41,10 +41,6 @@ data_path <- function(...) {
   repo_path("data", ...)
 }
 
-expected_path <- function(...) {
-  repo_path("expected", ...)
-}
-
 results_dir <- function() {
   ensure_dir(repo_path("results"))
 }
